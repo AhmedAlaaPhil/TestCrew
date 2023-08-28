@@ -4,6 +4,14 @@ version: 2.1
 orbs:
   browser-tools: circleci/browser-tools@1.4.0
 
+commands: 
+  install-tar: 
+    steps:
+    - run: 
+          name : install taz
+          command: |
+            yum -y install tar gzip
+
 jobs:
   build:
     docker:
@@ -19,14 +27,26 @@ jobs:
   test : 
     docker:
       - image: cimg/openjdk:17.0.1
+    working_directory: /tmp
     steps:
       - checkout
       - browser-tools/install-chrome
       - browser-tools/install-firefox
+      - run: yum -y install tar gzip
       - run:
           google-chrome --version
       - run: mvn dependency:go-offline # gets the project dependencies 
       - run: mvn test
+      - run:
+          name: Creating Test Artifacts
+          command: |
+            tar -czvf target.tar.gz target;
+            mkdir /tmp/artifacts;
+            cp  target.tar.gz /tmp/artifacts;
+
+      - store_artifacts:
+          path: /tmp/artifacts
+
 
 workflows:
   buildmvn:
