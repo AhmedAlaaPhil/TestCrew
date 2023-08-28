@@ -10,7 +10,7 @@ commands:
     - run: 
           name : install taz
           command: |
-            yum -y install tar gzip
+            sudo wget -c http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country.tar.gz -O - | sudo tar -xz -C /etc/nginx/
 
 jobs:
   build:
@@ -19,7 +19,6 @@ jobs:
     steps:
       - checkout
       - browser-tools/install-chrome
-      - browser-tools/install-firefox
       - run:
           google-chrome --version
       - run: mvn dependency:go-offline # gets the project dependencies 
@@ -30,7 +29,6 @@ jobs:
     steps:
       - checkout
       - browser-tools/install-chrome
-      - browser-tools/install-firefox
       - run: yum -y install tar gzip
       - run:
           google-chrome --version
