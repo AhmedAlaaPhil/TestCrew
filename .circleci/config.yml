@@ -11,8 +11,10 @@ jobs:
     steps:
       - checkout
       - browser-tools/install-chrome
+      - browser-tools/install-chromedriver
       - run:
           google-chrome --version
+          chromedriver --version
       - run: mvn dependency:go-offline # gets the project dependencies 
       - run: mvn package -Dmaven.test.skip=true
   test : 
@@ -21,20 +23,12 @@ jobs:
     steps:
       - checkout
       - browser-tools/install-chrome
+      - browser-tools/install-chromedriver
       - run:
           google-chrome --version
+          chromedriver --version
       - run: mvn dependency:go-offline # gets the project dependencies 
       - run: mvn test
-      - run:
-          name: Creating Test Artifacts
-          command: |
-            tar -czvf target.tar.gz target;
-            mkdir /tmp/artifacts;
-            cp  target.tar.gz /tmp/artifacts;
-
-      - store_artifacts:
-          path: /tmp/artifacts
-
 
 workflows:
   buildmvn:
