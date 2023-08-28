@@ -22,7 +22,7 @@ jobs:
           google-chrome --version
           chromedriver --version
       - run: mvn dependency:go-offline # gets the project dependencies 
-      - run: mvn test
+      - run: mvn clean verify
       - run: tar cvzf target.tgz target
       - store_artifacts:
           path:  target.tgz
