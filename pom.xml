@@ -65,7 +65,7 @@
         </dependency>
 
 
-    </dependencies>uti
+    </dependencies>
     <build>
         <plugins>
             <plugin>
