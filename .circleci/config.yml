@@ -27,7 +27,6 @@ jobs:
   test : 
     docker:
       - image: cimg/openjdk:17.0.1
-    working_directory: /tmp
     steps:
       - checkout
       - browser-tools/install-chrome
