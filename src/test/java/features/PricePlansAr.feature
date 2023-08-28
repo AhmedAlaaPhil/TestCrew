@@ -5,7 +5,7 @@ Feature: Plan Price Feature
 
 
 
-  @PricePlansAr @test @smoke
+  @PricePlansAr @test
   Scenario Outline: check price and currency in Arabic
 
     Given I Navigate to STC Tv Website

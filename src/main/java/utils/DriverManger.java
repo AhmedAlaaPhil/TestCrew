@@ -33,6 +33,7 @@ public class DriverManger {
                 }
                 break;
             case "Firefox": // set up the web driver manger
+                WebDriverManager.firefoxdriver().setup();
                 if(headless.equals("true")){
                     FirefoxOptions options = new FirefoxOptions();
                     // set options to headless mode
