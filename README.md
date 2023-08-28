@@ -46,7 +46,7 @@ to test Parallel execution feature
 3. POM is used 
 4. The util file have All genal classes needed
 
-##**Point covered as in the Task Doc**
+## **Point covered as in the Task Doc**
 
 **Java**
 1. Develop an effective and quality code using java
