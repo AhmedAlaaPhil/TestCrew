@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Test Suite" thread-count="2">
+    <test name="Test Case 1">
+        <classes>
+            <class name="runners.RunCucumberTests" />
+        </classes>
+    </test>
+
+</suite>
